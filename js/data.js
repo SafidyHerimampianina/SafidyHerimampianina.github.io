@@ -35,7 +35,8 @@ const profile = {
   timezone: 'GMT+3 · Antananarivo',
   email: 'safidyherimampianina@gmail.com',
   website: 'https://safidyherimampianina.github.io/',
-  cv: 'assets/CV_Safidy_Herimampianina.pdf',
+  // CV de chaque langue, générés par `node tools/cv.mjs` (voir le bloc `cv` plus bas).
+  cv: { fr: 'assets/CV_Safidy_Herimampianina.pdf', en: 'assets/CV_Safidy_Herimampianina_EN.pdf' },
   // Portrait retouché sur fond studio calé sur la couleur du site (#1c1f24), pour qu'il se fonde dans la page.
   // Variante sur fond gris clair d'origine : 'assets/img/portrait.webp' / 'assets/img/portrait-560.webp'.
   photo: 'assets/img/portrait-dark.webp',
@@ -897,6 +898,25 @@ const seo = {
   published: '2026-10-01',
 };
 
+/* ───────────────── CV (PDF) ───────────────── */
+/**
+ * `node tools/cv.mjs` écrit les PDF de profile.cv à partir de ce fichier : en-tête et coordonnées (profile),
+ * compétences (skillCategories), expériences et missions (experiences), avec le résultat de l'étude de cas
+ * du même client (projects), formation (education), langues et centres d'intérêt.
+ */
+const cv = {
+  headline: {
+    fr: 'Développeur Full Stack Senior · Java / Spring Boot · React · CI/CD',
+    en: 'Senior Full Stack Developer · Java / Spring Boot · React · CI/CD',
+  },
+  summary: {
+    fr: 'Développeur Full Stack senior avec plus de six ans d’expérience dans la conception, le développement et la mise en production d’applications web métier : back-offices institutionnels, plateformes e-commerce, automatisation et pipelines DevOps. Spécialiste Java / Spring Boot et React, je prends en charge un projet de bout en bout, de l’analyse du besoin à la mise en ligne et à la maintenance (Docker, CI/CD). Habitué au full remote avec la France, je travaille en français comme en anglais, sur des horaires communs avec l’Europe.',
+    en: 'Senior Full Stack developer with more than six years of experience designing, building and shipping business web applications: institutional back-offices, e-commerce platforms, automation and DevOps pipelines. Specialised in Java / Spring Boot and React, I own projects end to end, from requirements analysis to release and maintenance (Docker, CI/CD). Experienced in fully remote work with France, I work in English and French, on hours that overlap with Europe.',
+  },
+  // Catégories de skillCategories reprises dans le CV, dans cet ordre.
+  skills: ['backend', 'frontend', 'database', 'devops', 'mobile', 'tools', 'methods'],
+};
+
 /* ───────────────── Formulaire de contact ───────────────── */
 /** Sujets proposés au-dessus du formulaire de contact (remplissent le champ « Sujet »). */
 const contactTopics = [
@@ -1004,6 +1024,15 @@ const UI_STRINGS = {
     'case.ctaText': 'Je conçois, développe et mets en ligne des applications web Full Stack, en full remote depuis Madagascar. Parlons de votre besoin.',
     'case.all': 'Toutes les réalisations',
     'case.more': 'Autres réalisations',
+    'cv.title': 'CV',
+    'cv.profile': 'Profil',
+    'cv.skills': 'Compétences techniques',
+    'cv.education': 'Formation',
+    'cv.stack': 'Environnement technique',
+    'cv.topics': 'Spécialités',
+    'cv.extras': 'Langues & centres d’intérêt',
+    'cv.remote': 'Full remote',
+    'cv.portfolio': 'Portfolio et études de cas',
     'process.title': 'Comment nous travaillerons ensemble',
     'experience.title': 'Expérience professionnelle',
     'experience.missions': 'Missions notables',
@@ -1135,6 +1164,15 @@ const UI_STRINGS = {
     'case.ctaText': 'I design, build and launch Full Stack web applications, working fully remote from Madagascar. Let’s talk about what you need.',
     'case.all': 'All projects',
     'case.more': 'More projects',
+    'cv.title': 'Resume',
+    'cv.profile': 'Profile',
+    'cv.skills': 'Technical skills',
+    'cv.education': 'Education',
+    'cv.stack': 'Tech environment',
+    'cv.topics': 'Focus areas',
+    'cv.extras': 'Languages & interests',
+    'cv.remote': 'Fully remote',
+    'cv.portfolio': 'Portfolio and case studies',
     'process.title': 'How we’ll work together',
     'experience.title': 'Professional experience',
     'experience.missions': 'Notable engagements',

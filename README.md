@@ -17,13 +17,15 @@ en.html                 La page anglaise — générée, ne pas modifier
 projets/<id>/           Une page par étude de cas, en français — générées
 projects/<id>/          Les mêmes pages, en anglais — générées
 tools/prerender.mjs     Pré-rendu : contenu en dur, en.html, pages projets, données structurées, sitemap.xml
+tools/cv.mjs            CV en PDF (français et anglais), à partir de js/data.js
+tools/shared.mjs        Outils communs aux deux scripts (lecture de js/data.js, Chrome)
 404.html                Page « introuvable » servie automatiquement par GitHub Pages
 css/style.css           Tout le style : couleurs, composants, responsive, réduction des animations
 js/data.js              ← TOUT le contenu modifiable : CV (FR/EN), clés EmailJS, textes d'interface
 js/script.js            Toute la logique (aucune modification nécessaire)
 assets/
   img/                  Logo, portrait, icône iPhone, image de partage, captures de projets
-  CV_Safidy_Herimampianina.pdf   ← à ajouter
+  CV_Safidy_Herimampianina.pdf, CV_Safidy_Herimampianina_EN.pdf   CV générés par tools/cv.mjs
 favicon.svg, robots.txt, sitemap.xml, site.webmanifest
 .nojekyll               Indique à GitHub Pages de publier les fichiers tels quels
 ```
@@ -58,7 +60,8 @@ Après une modification, rechargez simplement la page, puis lancez `node tools/p
 - **Logo** : `assets/img/logo-s.svg` (le « S » seul, couleur héritée) ; `favicon.svg` (icône carrée) ;
   `assets/img/apple-touch-icon.png` (icône iPhone). Le même tracé est intégré dans `index.html` (barre de navigation et preloader).
 - **Image de partage** (réseaux sociaux) : `assets/img/og-image.jpg` (1200×630).
-- **CV** : déposez le PDF sous `assets/CV_Safidy_Herimampianina.pdf` (le lien de téléchargement pointe déjà dessus).
+- **CV** : généré à partir de `js/data.js` par `node tools/cv.mjs` (voir « CV » plus bas) ;
+  chaque version du site propose le CV de sa langue.
 - **Captures de projets** : voir `assets/img/projects/README.md`. Sans image, une maquette CSS est générée.
 - **Logos** : champ `icon` = slug [Simple Icons](https://simpleicons.org) (ex. `springboot`). Sans slug, une puce ambrée s’affiche.
 
@@ -117,6 +120,20 @@ le formulaire valide les champs puis propose d'écrire directement par email. Un
 3. Après une minute, le site est en ligne sur `https://<utilisateur>.github.io/<depot>/`
    (ou `https://<utilisateur>.github.io/` si le dépôt s'appelle `<utilisateur>.github.io`).
    Tous les chemins sont relatifs : le site fonctionne dans les deux cas.
+
+## CV
+
+```bash
+node tools/cv.mjs
+```
+
+Écrit `assets/CV_Safidy_Herimampianina.pdf` (français) et `assets/CV_Safidy_Herimampianina_EN.pdf` (anglais),
+au format A4, à partir de `js/data.js` : accroche et profil (bloc `cv`), compétences, expériences et missions,
+formation, langues et centres d'intérêt. Chaque mission reprend le « Résultat » de l'étude de cas du même client.
+Relancez-le quand ces données changent.
+
+Le CV est conçu pour les logiciels de tri de candidatures (ATS) : une seule colonne, du vrai texte, des titres de
+section classiques, des polices intégrées et des liens cliquables (email, LinkedIn, portfolio, études de cas).
 
 ## Référencement (SEO)
 

@@ -527,7 +527,7 @@ const Render = (() => {
 
     $('#brand-role').textContent = l(profile.title);
     $('.brand').setAttribute('aria-label', `Safidy H. ${l(profile.title)} — ${t('nav.brandLabel')}`);
-    $('#nav-cv').setAttribute('href', profile.cv);
+    $('#nav-cv').setAttribute('href', l(profile.cv));
 
     $('#nav-links').innerHTML = MENU.map(
       (id) => `
@@ -559,7 +559,7 @@ const Render = (() => {
         <div class="m-quick">
           <a href="mailto:${esc(profile.email)}">${icon('mail', 20)}<span>${esc(t('nav.write'))}</span></a>
           <a href="${phoneHref}">${icon('phone', 20)}<span>${esc(t('nav.call'))}</span></a>
-          <a class="is-primary" href="${esc(profile.cv)}" download>${icon('download', 20)}<span>${esc(t('nav.cvShort'))}</span></a>
+          <a class="is-primary" href="${esc(l(profile.cv))}" download>${icon('download', 20)}<span>${esc(t('nav.cvShort'))}</span></a>
         </div>
       </div>
       <div class="m-bottom" style="--i:${MENU.length + 2}">
@@ -625,7 +625,7 @@ const Render = (() => {
     photo.srcset = profile.photoSmall ? `${profile.photoSmall} 560w, ${profile.photo.replace('.webp', '-720.webp')} 720w, ${profile.photo} 960w` : '';
     $('#portrait-role').textContent = `${l(profile.title)} · ${l(profile.location).split(',')[0]}`;
     $('#about-heading').textContent = l(profile.tagline);
-    $('#about-cv').setAttribute('href', profile.cv);
+    $('#about-cv').setAttribute('href', l(profile.cv));
 
     $('#stats').innerHTML = stats
       .map(
@@ -1014,7 +1014,7 @@ const Render = (() => {
           <dd>${esc(profile.languages.map((x) => l(x.name)).join(' · '))}</dd>
         </div>
       </dl>
-      <a class="btn btn--ghost contact__cv magnetic" href="${esc(profile.cv)}" download>${icon('download', 16)} ${esc(t('nav.cv'))}</a>`;
+      <a class="btn btn--ghost contact__cv magnetic" href="${esc(l(profile.cv))}" download>${icon('download', 16)} ${esc(t('nav.cv'))}</a>`;
 
     $('#footer-copy').textContent = `© 2026 ${profile.firstName} ${profile.lastName}. ${t('footer.rights')}`;
   }
@@ -1111,7 +1111,7 @@ const Modal = (() => {
 
 /* ════════════════════ palette ════════════════════ */
 const Palette = (() => {
-  const { t, toggleLang } = I18n;
+  const { l, t, toggleLang } = I18n;
   const { NAV } = Render;
   const { lockScroll, scrollToId } = Scroll;
   const { $, copyText, esc, icon, reducedMotion, trapFocus } = Utils;
@@ -1151,8 +1151,8 @@ const Palette = (() => {
         icon: 'download',
         run: () => {
           const a = document.createElement('a');
-          a.href = profile.cv;
-          a.download = profile.cv.split('/').pop();
+          a.href = l(profile.cv);
+          a.download = a.href.split('/').pop();
           a.click();
         },
       },

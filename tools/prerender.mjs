@@ -20,29 +20,16 @@
 import { execFileSync } from 'node:child_process';
 import fs from 'node:fs';
 import path from 'node:path';
-import vm from 'node:vm';
-import { fileURLToPath, pathToFileURL } from 'node:url';
+import { pathToFileURL } from 'node:url';
+import { LANGS, ROOT, data, escAttr, escText, findChrome, l, readFile, t } from './shared.mjs';
 
-const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const LANGS = ['fr', 'en'];
 const TODAY = new Date().toLocaleDateString('sv'); // AAAA-MM-JJ (date locale)
 
-const readFile = (file) => fs.readFileSync(path.join(ROOT, file), 'utf8');
-
-/* ════════════════════ données ════════════════════ */
-// js/data.js est un script classique : on l'exécute dans un bac à sable pour lire ses constantes.
-const data = vm.runInNewContext(`${readFile('js/data.js')}
-;({ profile, expertise, strengths, projectFilters, projects, education, faq, seo, UI_STRINGS })`);
 const { profile, projects, seo } = data;
 const SITE = profile.website;
 const NAME = `${profile.firstName} ${profile.lastName}`;
 const PERSON = { '@id': `${SITE}#person` };
 const WEBSITE = { '@id': `${SITE}#website` };
-
-const l = (value, lang) => (value && typeof value === 'object' && !Array.isArray(value) ? (value[lang] ?? value.fr) : (value ?? ''));
-const t = (key, lang) => data.UI_STRINGS[lang][key] ?? data.UI_STRINGS.fr[key] ?? key;
-const escText = (s) => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-const escAttr = (s) => escText(s).replace(/"/g, '&quot;');
 const unique = (list) => [...new Set(list)];
 
 const homeURL = (lang) => SITE + seo.home[lang];
@@ -80,22 +67,6 @@ const CAPTURE_HTML = [
   'contact-info',
 ];
 const CAPTURE_TEXT = ['brand-role', 'hero-line', 'roles-sr', 'portrait-role', 'about-heading', 'about-text', 'footer-copy'];
-
-function findChrome() {
-  const candidates = [
-    process.env.CHROME,
-    '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
-    '/Applications/Chromium.app/Contents/MacOS/Chromium',
-    '/usr/bin/google-chrome',
-    '/usr/bin/google-chrome-stable',
-    '/usr/bin/chromium',
-    '/usr/bin/chromium-browser',
-    'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe',
-  ];
-  const chrome = candidates.find((file) => file && fs.existsSync(file));
-  if (!chrome) throw new Error('Chrome introuvable : indiquez son chemin avec CHROME=/chemin/vers/chrome');
-  return chrome;
-}
 
 /**
  * Ouvre la page dans Chrome sans fenêtre (profil temporaire neuf à chaque fois) et récupère le contenu
@@ -277,6 +248,9 @@ function homePage(source, lang, snap, date) {
       `<p class="noscript">${escText(NAME)} — ${escText(l(profile.title, lang))} · <a href="mailto:${profile.email}">${profile.email}</a> · ${escText(profile.phone)}</p>`,
     'noscript',
   );
+
+  // Liens « Télécharger le CV » du HTML statique : CV de la langue de la page.
+  html = html.split(l(profile.cv, 'fr')).join(l(profile.cv, lang));
 
   // En dernier : le contenu des conteneurs, encadré de marqueurs pour être remplacé à la prochaine exécution.
   for (const [id, inner] of Object.entries(snap.html)) {
