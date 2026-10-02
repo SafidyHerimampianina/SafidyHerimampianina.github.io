@@ -373,6 +373,7 @@ html.lenis body {
   font-family: var(--f-display);
   font-weight: 600;
   font-size: 15px;
+  white-space: nowrap;
 }
 .brand__text small {
   font-size: 12px;
@@ -766,10 +767,13 @@ html.lenis body {
 }
 
 /* Points de rupture du menu */
-@media (max-width: 1240px) {
+@media (max-width: 1400px) {
   .brand__text small,
   .nav__search-label {
     display: none;
+  }
+  .nav__link {
+    padding: 0 12px;
   }
 }
 @media (max-width: 1100px) {
@@ -1030,7 +1034,11 @@ html.lenis body {
   transform: none;
 }
 .hero__subtitle {
+  display: block;
   margin-top: 28px;
+  font-weight: 400;
+  line-height: 1.6;
+  text-shadow: none;
   font-family: var(--f-mono);
   font-size: clamp(12px, 1.6vw, 14px);
   letter-spacing: 0.12em;
@@ -1869,15 +1877,15 @@ html.lenis body {
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
-.project__title button::after {
+.project__title a::after {
   content: '';
   position: absolute;
   inset: 0;
 }
-.project__title button:focus-visible {
+.project__title a:focus-visible {
   outline: none;
 }
-.project:has(button:focus-visible) {
+.project:has(.project__title a:focus-visible) {
   outline: 2px solid var(--accent);
   outline-offset: 3px;
 }
@@ -2120,6 +2128,9 @@ html.lenis body {
 }
 .education {
   background: linear-gradient(180deg, var(--bg) 0%, var(--slate) 100%);
+}
+.faq {
+  background: var(--slate);
 }
 .contact {
   background:
@@ -3027,6 +3038,7 @@ html.lenis body {
   animation: chip-in 0.5s var(--ease) both;
   animation-delay: calc(var(--i) * 60ms + 150ms);
 }
+.case__block h2,
 .case__block h3 {
   font-family: var(--f-mono);
   font-size: 12px;
@@ -3046,6 +3058,180 @@ html.lenis body {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
+}
+
+/* ---------- Questions fréquentes ---------- */
+.faq__list {
+  display: grid;
+  gap: 8px;
+  max-width: 860px;
+  margin-inline: auto;
+}
+.faq__item summary {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 14px 18px;
+  background: var(--slate-2);
+  list-style: none;
+  cursor: pointer;
+  transition: background-color 0.25s;
+}
+.faq__item summary::-webkit-details-marker {
+  display: none;
+}
+.faq__item summary:hover,
+.faq__item[open] summary {
+  background: var(--slate-3);
+  box-shadow: inset 2px 0 0 var(--accent);
+}
+.faq__question {
+  flex: 1;
+  font-family: var(--f-display);
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 1.45;
+}
+.faq__item summary .icon {
+  transition: transform 0.35s var(--ease);
+}
+.faq__item[open] summary .icon {
+  transform: rotate(45deg);
+}
+.faq__answer {
+  padding: 18px 22px 20px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-top: 0;
+  color: #e4e4e7;
+}
+
+/* ---------- Pages « étude de cas » (projets/<id>/, projects/<id>/) ---------- */
+.case-page__head {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(20, 22, 26, 0.88);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
+}
+.case-page__bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  min-height: var(--nav-h);
+}
+.case-page__actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.case-page__lang {
+  display: grid;
+  place-items: center;
+  min-width: 46px;
+  min-height: 46px;
+  font-family: var(--f-mono);
+  font-size: 13px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  color: var(--muted);
+  transition:
+    color 0.2s,
+    border-color 0.2s;
+}
+.case-page__lang:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+.case-page__main {
+  max-width: 860px;
+  padding-block: 36px 96px;
+}
+.breadcrumb ol {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 28px;
+  font-family: var(--f-mono);
+  font-size: 12px;
+  color: var(--muted);
+}
+.breadcrumb li + li::before {
+  content: '/';
+  margin-right: 6px;
+  color: var(--dim);
+}
+.breadcrumb a:hover {
+  color: var(--accent);
+}
+.case-page__cover {
+  margin-top: 28px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+}
+.case-page__cta {
+  margin-top: 56px;
+  padding: clamp(24px, 4vw, 36px);
+  border: 1px solid var(--frame);
+  background: var(--accent-wash);
+}
+.case-page__cta h2 {
+  font-family: var(--f-display);
+  font-weight: 600;
+  font-size: clamp(22px, 3vw, 28px);
+  line-height: 1.25;
+}
+.case-page__cta p {
+  margin: 8px 0 22px;
+  color: #d4d4d8;
+}
+.case-page__cta div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.case-page__more {
+  margin-top: 56px;
+}
+.case-page__more ul {
+  display: grid;
+  gap: 8px;
+}
+.case-page__more a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px 18px;
+  background: var(--slate-2);
+  font-weight: 500;
+  font-size: 15px;
+  transition: background-color 0.25s;
+}
+.case-page__more a:hover {
+  background: var(--slate-3);
+  box-shadow: inset 2px 0 0 var(--accent);
+}
+.case-page__more a span {
+  font-family: var(--f-mono);
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--muted);
+  white-space: nowrap;
+}
+@media (max-width: 640px) {
+  .case-page__head .brand__text small,
+  .case-page__head .btn {
+    display: none;
+  }
+  .case-page__more a {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+  }
 }
 
 /* ---------- Palette de commandes ---------- */

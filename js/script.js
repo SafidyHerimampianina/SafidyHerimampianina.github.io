@@ -126,7 +126,10 @@ const I18n = (() => {
     }
   }
 
-  let current = readStored() ?? 'fr';
+  /** Langue du fichier chargé : index.html (fr) ou en.html (en), d'après son attribut lang. */
+  const PAGE_LANG = document.documentElement.lang === 'en' ? 'en' : 'fr';
+  // La page anglaise s'affiche toujours en anglais ; l'accueil reprend la langue choisie lors d'une visite précédente.
+  let current = PAGE_LANG === 'en' ? 'en' : (readStored() ?? 'fr');
 
   const getLang = () => current;
 
@@ -164,22 +167,19 @@ const I18n = (() => {
     setMeta('meta[name="twitter:title"]', t('meta.title'));
     setMeta('meta[property="og:locale"]', current === 'fr' ? 'fr_FR' : 'en_US');
     setMeta('meta[property="og:locale:alternate"]', current === 'fr' ? 'en_US' : 'fr_FR');
-    // Chaque langue a sa propre URL canonique (la version FR est à la racine, l'anglaise sur ?lang=en).
-    const url = pageURL(current);
-    document.querySelector('link[rel="canonical"]')?.setAttribute('href', url);
-    setMeta('meta[property="og:url"]', url);
+    setMeta('meta[property="og:url"]', pageURL(current));
   }
 
-  /** URL publique d'une langue, construite à partir de la canonique d'origine du HTML. */
-  const BASE_URL = document.querySelector('link[rel="canonical"]')?.getAttribute('href') ?? location.href.split(/[?#]/)[0];
-  const pageURL = (lang) => (lang === 'en' ? `${BASE_URL}?lang=en` : BASE_URL);
+  /** URL publique de l'accueil d'une langue : la racine en français, en.html en anglais. */
+  const pageURL = (lang) => profile.website + seo.home[lang];
 
   /** Garde l'URL de la barre d'adresse alignée sur la langue affichée (pour les liens partagés). */
   function syncURL() {
     try {
       const url = new URL(location.href);
-      if (current === 'en') url.searchParams.set('lang', 'en');
-      else url.searchParams.delete('lang');
+      // ?lang= seulement quand la langue affichée n'est pas celle du fichier (index.html?lang=en, en.html?lang=fr).
+      if (current === PAGE_LANG) url.searchParams.delete('lang');
+      else url.searchParams.set('lang', current);
       history.replaceState(history.state, '', url);
     } catch {
       /* history indisponible */
@@ -467,7 +467,7 @@ const Render = (() => {
   const { $, esc, icon } = Utils;
 
   /** Sections de la navigation, dans l'ordre de la page. */
-  const NAV = ['home', 'expertise', 'work', 'experience', 'education', 'contact'];
+  const NAV = ['home', 'expertise', 'about', 'work', 'experience', 'education', 'contact'];
 
   const state = { skillFilter: 'all', projectFilter: 'all', openAccordion: 'bici' };
 
@@ -490,6 +490,8 @@ const Render = (() => {
 
   const tags = (items) => items.map((s) => `<li class="tag">${esc(l(s))}</li>`).join('');
   const bullets = (items) => items.map((s) => `<li>${esc(s)}</li>`).join('');
+  /** Page statique d'une étude de cas (générée par tools/prerender.mjs), relative à la racine du site. */
+  const projectHref = (p) => `${seo.projects[I18n.getLang()]}/${p.id}/`;
 
   /* ---------- Navigation ---------- */
   /** Sections affichées dans les menus (l'accueil passe par le logo). */
@@ -504,6 +506,8 @@ const Render = (() => {
     switch (id) {
       case 'expertise':
         return fill('nav.d.expertise', { n: skillCount, areas: expertise.map((e) => l(e.title)).join(', ') });
+      case 'about':
+        return fill('nav.d.about', { location: l(profile.location), languages: profile.languages.map((x) => l(x.name)).join(', ') });
       case 'work':
         return fill('nav.d.work', { n: projects.length, clients: uniq(projects.map((p) => p.client)).slice(0, 3).join(', ') });
       case 'experience':
@@ -770,7 +774,7 @@ const Render = (() => {
         <li class="project project--${p.size}${i === list.length - 1 && list.filter((x) => x.size !== 'wide').length % 2 ? ' project--fill' : ''}" style="--i:${i}">
           <div class="project__cover">${mockHTML(p)}</div>
           <div class="project__caption">
-            <h3 class="project__title"><button type="button" data-project="${p.id}" aria-haspopup="dialog">${esc(l(p.title))}</button></h3>
+            <h3 class="project__title"><a href="${projectHref(p)}" data-project="${p.id}" aria-haspopup="dialog">${esc(l(p.title))}</a></h3>
             <p class="project__meta">${esc([categoryLabel(p.category), p.client, l(p.year)].filter(Boolean).join(' · '))}</p>
           </div>
           <span class="project__glare" aria-hidden="true"></span>
@@ -952,6 +956,19 @@ const Render = (() => {
       .join('');
   }
 
+  /* ---------- Questions fréquentes ---------- */
+  function renderFaq() {
+    $('#faq-list').innerHTML = faq
+      .map(
+        (f) => `
+        <details class="faq__item">
+          <summary><h3 class="faq__question">${esc(l(f.q))}</h3>${icon('plus', 16)}</summary>
+          <div class="faq__answer"><p>${esc(l(f.a))}</p></div>
+        </details>`,
+      )
+      .join('');
+  }
+
   /* ---------- Contact & pied de page ---------- */
   function renderContact() {
     const phoneHref = `tel:${profile.phone.replace(/\s/g, '')}`;
@@ -1013,6 +1030,7 @@ const Render = (() => {
     renderProcess();
     renderExperience();
     renderEducation();
+    renderFaq();
     renderContact();
   }
 
@@ -1511,7 +1529,10 @@ const Main = (() => {
     const io = new IntersectionObserver(
       (entries) => {
         entries.forEach((e) => visible.set(e.target.id, e.isIntersecting));
-        const current = NAV.find((id) => visible.get(id));
+        // « À propos » est imbriqué dans « Services » : la section la plus intérieure l'emporte.
+        const shown = NAV.filter((id) => visible.get(id));
+        const el = (id) => document.getElementById(id);
+        const current = shown.find((id) => !shown.some((o) => o !== id && el(id).contains(el(o))));
         if (current) setActive(current);
       },
       { rootMargin: '-40% 0px -55% 0px' },
@@ -1547,7 +1568,11 @@ const Main = (() => {
       if (projectFilter) return setProjectFilter(projectFilter.dataset.projectFilter);
 
       const project = e.target.closest('[data-project]');
-      if (project) return openProject(project.dataset.project, project.closest('.project') ?? project);
+      if (project) {
+        if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+        e.preventDefault();
+        return openProject(project.dataset.project, project.closest('.project') ?? project);
+      }
 
       const acc = e.target.closest('[data-accordion]');
       if (acc) return toggleAccordion(acc.dataset.accordion);

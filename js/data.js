@@ -17,8 +17,8 @@ const profile = {
   initials: 'SH',
   title: { fr: 'Développeur Full Stack Senior', en: 'Senior Full Stack Developer' },
   heroLine: {
-    fr: 'Développeur Full Stack Senior & Java · Madagascar · Full Remote',
-    en: 'Senior Full Stack & Java Developer · Madagascar · Full Remote',
+    fr: 'Développeur Full Stack Senior · Java & React · Full remote depuis Madagascar',
+    en: 'Senior Full Stack Developer · Java & React · Fully remote from Madagascar',
   },
   roles: ['Full Stack Developer', 'Java / Spring Boot', 'React', 'DevOps & CI/CD'],
   // Phrase d'accroche affichée en grand dans « À propos ».
@@ -42,8 +42,8 @@ const profile = {
   photoSmall: 'assets/img/portrait-dark-560.webp',
   yearsOfExperience: 6,
   about: {
-    fr: 'Depuis plus de six ans, j’accompagne entreprises et organisations, à Madagascar comme en France, dans la création de leurs applications métier, plateformes e-commerce et outils internes. Je prends en charge tout le projet : comprendre votre besoin, concevoir la solution, la développer, la mettre en ligne et la faire évoluer. Vous avez un seul interlocuteur, en français ou en anglais, qui vous tient informé à chaque étape. Côté équipe tech, je m’intègre rapidement à une stack Java / Spring Boot, React et CI/CD existante, en full remote.',
-    en: 'For more than six years, I have helped companies and organisations, in Madagascar and in France, build their business applications, e-commerce platforms and internal tools. I take care of the whole project: understanding your needs, designing the solution, building it, launching it and improving it over time. You get a single point of contact, in English or French, who keeps you informed at every step. For tech teams, I quickly fit into an existing Java / Spring Boot, React and CI/CD stack, fully remote.',
+    fr: 'Depuis plus de six ans, j’accompagne entreprises et organisations, à Madagascar comme en France, dans la création de leurs applications métier, plateformes e-commerce et outils internes. Je prends en charge tout le projet : comprendre votre besoin, concevoir la solution, la développer, la mettre en ligne et la faire évoluer. Vous avez un seul interlocuteur, en français ou en anglais, qui vous tient informé à chaque étape. Basé à Antananarivo (GMT+3), je travaille en full remote sur des horaires communs avec l’Europe, et je m’intègre rapidement à une stack Java / Spring Boot, React et CI/CD existante.',
+    en: 'For more than six years, I have helped companies and organisations, in Madagascar and in France, build their business applications, e-commerce platforms and internal tools. I take care of the whole project: understanding your needs, designing the solution, building it, launching it and improving it over time. You get a single point of contact, in English or French, who keeps you informed at every step. Based in Antananarivo (GMT+3), I work fully remote on hours that overlap with Europe, and I quickly fit into an existing Java / Spring Boot, React and CI/CD stack.',
   },
   // Laissez href vide pour masquer un lien.
   socials: [
@@ -822,6 +822,81 @@ const education = [
   },
 ];
 
+/**
+ * Questions fréquentes (section « Questions fréquentes », juste avant le contact).
+ * Elles ciblent les recherches « développeur full stack / full remote / Madagascar » :
+ * gardez des réponses factuelles, elles apparaissent telles quelles dans Google.
+ */
+const faq = [
+  {
+    q: { fr: 'Travaillez-vous en full remote depuis Madagascar ?', en: 'Do you work fully remote from Madagascar?' },
+    a: {
+      fr: 'Oui. Je suis basé à Antananarivo et je travaille en full remote pour des entreprises à Madagascar, en France et à l’international. J’ai par exemple automatisé à distance les pipelines CI/CD et les processus Azure de SAFRAM, une entreprise française.',
+      en: 'Yes. I am based in Antananarivo and work fully remote for companies in Madagascar, France and worldwide. For example, I remotely automated the CI/CD pipelines and Azure processes of SAFRAM, a French company.',
+    },
+  },
+  {
+    q: { fr: 'Pourquoi travailler avec un développeur basé à Madagascar ?', en: 'Why work with a developer based in Madagascar?' },
+    a: {
+      fr: 'Vous travaillez avec un développeur Full Stack senior francophone et anglophone, sur un fuseau horaire proche de l’Europe, qui a plus de six ans d’expérience sur des applications en production (Java, React, CI/CD) pour des clients à Madagascar et en France.',
+      en: 'You work with a senior Full Stack developer who speaks French and English, in a time zone close to Europe, with more than six years of experience on production applications (Java, React, CI/CD) for clients in Madagascar and France.',
+    },
+  },
+  {
+    q: { fr: 'Quel est le décalage horaire avec la France ?', en: 'What is the time difference with Europe?' },
+    a: {
+      fr: 'Madagascar est à GMT+3, sans changement d’heure : une heure de plus qu’à Paris en été, deux heures en hiver. Nos journées de travail se recouvrent presque entièrement, ce qui facilite les réunions et les échanges en direct.',
+      en: 'Madagascar is on GMT+3 with no daylight saving time: one to two hours ahead of Paris or Berlin, two to three hours ahead of London. Our working days overlap almost entirely, which makes meetings and live discussions easy.',
+    },
+  },
+  {
+    q: { fr: 'Quelles technologies utilisez-vous ?', en: 'Which technologies do you use?' },
+    a: {
+      fr: 'Côté serveur : Java / Spring Boot, mais aussi PHP / Symfony et .NET. Côté interface : React, TypeScript et JavaScript. Pour les données : MySQL, PostgreSQL et Oracle. Pour la mise en ligne : Docker et la CI/CD (GitHub Actions, GitLab CI, Jenkins, Azure DevOps).',
+      en: 'Back end: Java / Spring Boot, as well as PHP / Symfony and .NET. Front end: React, TypeScript and JavaScript. Data: MySQL, PostgreSQL and Oracle. Delivery: Docker and CI/CD (GitHub Actions, GitLab CI, Jenkins, Azure DevOps).',
+    },
+  },
+  {
+    q: { fr: 'Comment se passe une collaboration à distance ?', en: 'How does a remote collaboration work?' },
+    a: {
+      fr: 'Un premier appel pour comprendre votre besoin, puis une proposition claire : solution, planning et budget. Je développe par étapes, avec des démos régulières sur une version de test, et chaque nouveauté est mise en ligne automatiquement, sans coupure. Vous avez un seul interlocuteur du début à la fin.',
+      en: 'A first call to understand your needs, then a clear proposal: solution, timeline and budget. I build step by step, with regular demos on a preview version, and every new feature is released automatically, with no downtime. You have a single point of contact from start to finish.',
+    },
+  },
+  {
+    q: { fr: 'Êtes-vous disponible en freelance ou pour un poste ?', en: 'Are you available for freelance work or a remote position?' },
+    a: {
+      fr: 'Les deux : je réalise des projets complets et des missions freelance, et je peux aussi rejoindre votre équipe tech sur un poste en full remote. Décrivez-moi votre besoin, je vous réponds rapidement.',
+      en: 'Both: I take on complete projects and freelance contracts, and I can also join your tech team in a fully remote position. Tell me what you need and I will get back to you quickly.',
+    },
+  },
+  {
+    q: { fr: 'En quelles langues pouvons-nous travailler ?', en: 'Which languages can we work in?' },
+    a: {
+      fr: 'En français ou en anglais, à l’écrit comme à l’oral. Le malgache est ma langue maternelle.',
+      en: 'French or English, written and spoken. Malagasy is my native language.',
+    },
+  },
+];
+
+/* ───────────────── Référencement ───────────────── */
+/**
+ * Adresses des pages et informations des données structurées (schema.org).
+ * Lu par js/script.js et par tools/prerender.mjs : relancez `node tools/prerender.mjs` après une modification.
+ */
+const seo = {
+  // Page d'accueil de chaque langue, relative à profile.website.
+  home: { fr: '', en: 'en.html' },
+  // Dossier des pages « étude de cas » : projets/<id>/ en français, projects/<id>/ en anglais.
+  projects: { fr: 'projets', en: 'projects' },
+  sameAs: ['https://www.linkedin.com/in/safidy-herimampianina-0170321a4/', 'https://github.com/SafidyHerimampianina'],
+  knowsLanguage: ['mg', 'fr', 'en'],
+  nationality: 'Madagascar',
+  address: { locality: 'Antananarivo', country: 'MG' },
+  worksFor: 'BICI', // employeur actuel ; '' pour ne pas l'indiquer
+  published: '2026-10-01',
+};
+
 /* ───────────────── Formulaire de contact ───────────────── */
 /** Sujets proposés au-dessus du formulaire de contact (remplissent le champ « Sujet »). */
 const contactTopics = [
@@ -849,9 +924,10 @@ const EMAILJS = {
  */
 const UI_STRINGS = {
   fr: {
-    'meta.title': 'Développeur Full Stack Senior & Java à Madagascar, Full Remote — Safidy Herimampianina',
+    'meta.title': 'Développeur Full Stack en full remote à Madagascar · Java & React | Safidy Herimampianina',
     'meta.description':
-      'Safidy Herimampianina, développeur Full Stack senior et Java à Madagascar (Spring Boot, React, DevOps), 6+ ans d’expérience. Disponible en full remote.',
+      'Développeur Full Stack senior en full remote depuis Madagascar : Java / Spring Boot, React, CI/CD. 6+ ans d’expérience. Freelance ou poste à distance.',
+    'meta.imageAlt': 'Safidy Herimampianina, développeur Full Stack senior en full remote depuis Madagascar',
     'a11y.skip': 'Aller au contenu',
     'a11y.menu': 'Ouvrir le menu',
     'a11y.menuClose': 'Fermer le menu',
@@ -866,6 +942,7 @@ const UI_STRINGS = {
     'a11y.loading': 'Chargement',
     'nav.home': 'accueil',
     'nav.expertise': 'Services',
+    'nav.about': 'À propos',
     'nav.work': 'Réalisations',
     'nav.experience': 'Expérience',
     'nav.education': 'Formation',
@@ -879,6 +956,7 @@ const UI_STRINGS = {
     'nav.call': 'Appeler',
     'nav.write': 'Écrire',
     'nav.d.expertise': '{{n}} technologies · {{areas}}',
+    'nav.d.about': '{{location}} · {{languages}}',
     'nav.d.work': '{{n}} études de cas · {{clients}}',
     'nav.d.experience': '{{years}}+ ans · {{companies}}',
     'nav.d.education': '{{degree}}',
@@ -888,7 +966,7 @@ const UI_STRINGS = {
     'hero.trusted': 'Ils m’ont fait confiance',
     'hero.ctaWork': 'Voir mes projets',
     'hero.ctaContact': 'Me contacter',
-    'expertise.title': 'Services & expertise',
+    'expertise.title': 'Services de développement Full Stack',
     'expertise.intro':
       'Entreprises : je livre des applications qui font gagner du temps à vos équipes. Équipes tech : je rejoins votre stack Java / Spring Boot, React et CI/CD, en full remote.',
     'expertise.levels': 'Points forts',
@@ -917,6 +995,15 @@ const UI_STRINGS = {
     'work.result': 'Résultat',
     'work.demo': 'Voir la démo',
     'work.code': 'Voir le code',
+    'faq.title': 'Questions fréquentes',
+    'faq.intro': 'Travailler en full remote avec un développeur Full Stack basé à Madagascar : l’essentiel en quelques réponses.',
+    'case.title': 'étude de cas',
+    'case.home': 'Accueil',
+    'case.breadcrumb': 'Fil d’Ariane',
+    'case.ctaTitle': 'Un projet similaire ?',
+    'case.ctaText': 'Je conçois, développe et mets en ligne des applications web Full Stack, en full remote depuis Madagascar. Parlons de votre besoin.',
+    'case.all': 'Toutes les réalisations',
+    'case.more': 'Autres réalisations',
     'process.title': 'Comment nous travaillerons ensemble',
     'experience.title': 'Expérience professionnelle',
     'experience.missions': 'Missions notables',
@@ -968,9 +1055,10 @@ const UI_STRINGS = {
     'palette.hint': '↑↓ naviguer · ↵ valider · esc fermer',
   },
   en: {
-    'meta.title': 'Senior Full Stack & Java Developer in Madagascar, Full Remote — Safidy Herimampianina',
+    'meta.title': 'Remote Full Stack Developer in Madagascar · Java & React | Safidy Herimampianina',
     'meta.description':
-      'Safidy Herimampianina, senior Full Stack and Java developer in Madagascar (Spring Boot, React, DevOps), 6+ years of experience. Available full remote.',
+      'Senior Full Stack developer working fully remote from Madagascar: Java / Spring Boot, React, CI/CD. 6+ years of experience. Freelance or remote position.',
+    'meta.imageAlt': 'Safidy Herimampianina, senior Full Stack developer working fully remote from Madagascar',
     'a11y.skip': 'Skip to content',
     'a11y.menu': 'Open menu',
     'a11y.menuClose': 'Close menu',
@@ -985,6 +1073,7 @@ const UI_STRINGS = {
     'a11y.loading': 'Loading',
     'nav.home': 'home',
     'nav.expertise': 'Services',
+    'nav.about': 'About',
     'nav.work': 'Work',
     'nav.experience': 'Experience',
     'nav.education': 'Education',
@@ -998,6 +1087,7 @@ const UI_STRINGS = {
     'nav.call': 'Call',
     'nav.write': 'Email',
     'nav.d.expertise': '{{n}} technologies · {{areas}}',
+    'nav.d.about': '{{location}} · {{languages}}',
     'nav.d.work': '{{n}} case studies · {{clients}}',
     'nav.d.experience': '{{years}}+ years · {{companies}}',
     'nav.d.education': '{{degree}}',
@@ -1007,7 +1097,7 @@ const UI_STRINGS = {
     'hero.trusted': 'Trusted by',
     'hero.ctaWork': 'See my work',
     'hero.ctaContact': 'Get in touch',
-    'expertise.title': 'Services & expertise',
+    'expertise.title': 'Full Stack development services',
     'expertise.intro':
       'Businesses: I deliver applications that save your teams time. Tech teams: I join your Java / Spring Boot, React and CI/CD stack, fully remote.',
     'expertise.levels': 'Core strengths',
@@ -1036,6 +1126,15 @@ const UI_STRINGS = {
     'work.result': 'Outcome',
     'work.demo': 'Live demo',
     'work.code': 'Source code',
+    'faq.title': 'Frequently asked questions',
+    'faq.intro': 'Working fully remote with a Full Stack developer based in Madagascar: the essentials in a few answers.',
+    'case.title': 'case study',
+    'case.home': 'Home',
+    'case.breadcrumb': 'Breadcrumb',
+    'case.ctaTitle': 'A similar project?',
+    'case.ctaText': 'I design, build and launch Full Stack web applications, working fully remote from Madagascar. Let’s talk about what you need.',
+    'case.all': 'All projects',
+    'case.more': 'More projects',
     'process.title': 'How we’ll work together',
     'experience.title': 'Professional experience',
     'experience.missions': 'Notable engagements',
