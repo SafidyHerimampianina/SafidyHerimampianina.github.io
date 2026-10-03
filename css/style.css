@@ -2585,12 +2585,14 @@ html.lenis body {
   align-items: center;
   gap: 14px;
   padding: 16px 20px;
-  border: 1px solid rgba(134, 239, 172, 0.25);
+  border: 1px solid var(--frame);
   border-radius: var(--radius);
-  background: rgba(134, 239, 172, 0.05);
+  background: var(--accent-wash);
 }
-.contact__status .pulse {
+.contact__status .pulse,
+.contact__status .pulse::after {
   flex: none;
+  background: var(--accent);
 }
 .contact__status strong {
   display: block;
@@ -2813,6 +2815,81 @@ html.lenis body {
 .hp {
   position: absolute;
   left: -9999px;
+}
+/* Case « Je ne suis pas un robot » (.field label pour l'emporter sur le style des libellés de champ) */
+.field label.human {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 16px 10px 12px;
+  font-size: 14px;
+  background: rgba(0, 0, 0, 0.22);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 2px;
+  cursor: pointer;
+  user-select: none;
+  transition: border-color 0.2s;
+}
+.field label.human {
+  margin-bottom: 0;
+  font-weight: 400;
+}
+.human:hover {
+  border-color: var(--accent);
+}
+.human input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+.human__box {
+  display: grid;
+  place-items: center;
+  width: 20px;
+  height: 20px;
+  border: 1.5px solid rgba(255, 255, 255, 0.5);
+  border-radius: 2px;
+  color: var(--on-accent);
+  transition:
+    background-color 0.2s,
+    border-color 0.2s;
+}
+.human__box svg {
+  opacity: 0;
+  transform: scale(0.6);
+  transition:
+    opacity 0.2s,
+    transform 0.2s var(--ease);
+}
+.human input:checked + .human__box {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+.human input:checked + .human__box svg {
+  opacity: 1;
+  transform: none;
+}
+.human input:focus-visible + .human__box {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+.field label.human[hidden] {
+  display: none;
+}
+/* Widget Google reCAPTCHA : place réservée (pas de saut de mise en page au chargement) */
+.recaptcha {
+  min-height: 78px;
+}
+@media (max-width: 380px) {
+  .recaptcha {
+    transform: scale(0.9);
+    transform-origin: left top;
+  }
+}
+.human:has([aria-invalid='true']) {
+  border-color: var(--danger);
 }
 .form-status:not(:empty) {
   margin-top: 16px;

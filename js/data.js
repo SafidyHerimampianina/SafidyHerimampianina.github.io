@@ -933,9 +933,12 @@ const contactTopics = [
  * Laissez les valeurs vides : le formulaire proposera alors d'écrire directement par email.
  */
 const EMAILJS = {
-  serviceId: '',
-  templateId: '',
-  publicKey: '',
+  serviceId: 'service_x2b0w3r',
+  templateId: 'template_f00klsk',
+  publicKey: 'DQWijvtXNDSlhjGvd',
+  // Clé du site Google reCAPTCHA v2 (case « Je ne suis pas un robot »), vérifiée par EmailJS avec la clé secrète
+  // renseignée dans le modèle (Settings → Enable reCAPTCHA V2 verification). Vide : case simple, sans Google.
+  recaptchaSiteKey: '6LdFVhgqAAAAAJ7aTritt_Vg8RxZHkYQa4PgH1pz',
 };
 
 /* ───────────────── Textes d'interface (FR / EN) ─────────────────
@@ -1067,6 +1070,8 @@ const UI_STRINGS = {
     'contact.v.email': 'Adresse email invalide.',
     'contact.v.subject': 'Le sujet doit contenir au moins 3 caractères.',
     'contact.v.message': 'Le message doit contenir au moins 10 caractères.',
+    'contact.human': 'Je ne suis pas un robot',
+    'contact.v.human': 'Cochez la case pour confirmer que vous n’êtes pas un robot.',
     'contact.phone': 'Téléphone',
     'contact.location': 'Localisation',
     'contact.copied': 'Copié !',
@@ -1207,6 +1212,8 @@ const UI_STRINGS = {
     'contact.v.email': 'Invalid email address.',
     'contact.v.subject': 'Subject must be at least 3 characters.',
     'contact.v.message': 'Message must be at least 10 characters.',
+    'contact.human': 'I’m not a robot',
+    'contact.v.human': 'Please tick the box to confirm you are not a robot.',
     'contact.phone': 'Phone',
     'contact.location': 'Location',
     'contact.copied': 'Copied!',

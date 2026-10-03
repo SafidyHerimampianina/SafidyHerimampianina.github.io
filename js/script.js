@@ -1316,14 +1316,51 @@ const Contact = (() => {
     email: (v) => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v) || 'contact.v.email',
     subject: (v) => v.length >= 3 || 'contact.v.subject',
     message: (v) => v.length >= 10 || 'contact.v.message',
+    human: (checked) => checked || 'contact.v.human',
   };
+
+  /** Un envoi moins de 3 s après l'affichage du formulaire vient d'un robot. */
+  const MIN_FILL_MS = 3000;
+  let startedAt = 0;
 
   const touched = new Set();
   let lastStatus = null;
 
+  /* ---------- Google reCAPTCHA v2, vérifié par EmailJS (sinon, case simple) ---------- */
+  const RECAPTCHA_SRC = 'https://www.google.com/recaptcha/api.js';
+  const useRecaptcha = () => Boolean(EMAILJS.recaptchaSiteKey);
+  let recaptchaId = null;
+
+  function renderRecaptcha() {
+    if (recaptchaId !== null || !window.grecaptcha?.render) return;
+    const form = $('#contact-form');
+    const revalidate = () => touched.has('human') && validateField(form, 'human');
+    recaptchaId = window.grecaptcha.render('recaptcha', {
+      sitekey: EMAILJS.recaptchaSiteKey,
+      theme: 'dark',
+      callback: revalidate,
+      'expired-callback': revalidate,
+    });
+  }
+
+  /** Charge le script de Google seulement à l'approche du formulaire (il pèse plusieurs centaines de Ko). */
+  function loadRecaptcha() {
+    if (window.grecaptcha?.render) return renderRecaptcha();
+    if (document.querySelector(`script[src^="${RECAPTCHA_SRC}"]`)) return;
+    window.onRecaptchaLoad = renderRecaptcha;
+    const s = document.createElement('script');
+    s.src = `${RECAPTCHA_SRC}?onload=onRecaptchaLoad&render=explicit&hl=${I18n.getLang()}`;
+    s.async = true;
+    document.head.append(s);
+  }
+
+  const recaptchaToken = () => (recaptchaId === null ? '' : window.grecaptcha.getResponse(recaptchaId));
+
   function validateField(form, name) {
     const input = form.elements[name];
-    const result = rules[name](input.value.trim());
+    let value = input.type === 'checkbox' ? input.checked : input.value.trim();
+    if (name === 'human' && useRecaptcha()) value = Boolean(recaptchaToken());
+    const result = rules[name](value);
     const error = result === true ? '' : t(result);
     $(`#f-${name}-err`).textContent = error;
     input.setAttribute('aria-invalid', error ? 'true' : 'false');
@@ -1365,8 +1402,23 @@ const Contact = (() => {
 
   function initContact() {
     const form = $('#contact-form');
+    startedAt = Date.now();
     setLoading(false);
     renderTopics();
+    if (useRecaptcha()) {
+      $('.human').hidden = true;
+      $('#recaptcha').hidden = false;
+      if ('IntersectionObserver' in window) {
+        const io = new IntersectionObserver((entries) => {
+          if (entries.some((e) => e.isIntersecting)) {
+            io.disconnect();
+            loadRecaptcha();
+          }
+        }, { rootMargin: '400px' });
+        io.observe(form);
+      }
+      form.addEventListener('focusin', loadRecaptcha, { once: true });
+    }
     $('#contact-topics').addEventListener('click', (e) => {
       const btn = e.target.closest('[data-topic]');
       if (btn) selectTopic(Number(btn.dataset.topic));
@@ -1374,10 +1426,13 @@ const Contact = (() => {
 
     Object.keys(rules).forEach((name) => {
       const input = form.elements[name];
-      input.addEventListener('blur', () => {
-        touched.add(name);
-        validateField(form, name);
-      });
+      // La case « Je ne suis pas un robot » n'est vérifiée qu'à l'envoi, ou dès qu'on la coche.
+      if (input.type !== 'checkbox') {
+        input.addEventListener('blur', () => {
+          touched.add(name);
+          validateField(form, name);
+        });
+      }
       input.addEventListener('input', () => touched.has(name) && validateField(form, name));
     });
 
@@ -1389,7 +1444,7 @@ const Contact = (() => {
         form.querySelector('[aria-invalid="true"]')?.focus();
         return;
       }
-      if (form.elements.website.value) return; // robot (champ piège)
+      if (form.elements.website.value || Date.now() - startedAt < MIN_FILL_MS) return; // robot (champ piège, envoi instantané)
 
       const { serviceId, templateId, publicKey } = EMAILJS;
       if (!serviceId || !templateId || !publicKey) {
@@ -1410,8 +1465,10 @@ const Contact = (() => {
             subject: form.elements.subject.value.trim(),
             message: form.elements.message.value.trim(),
             to_email: profile.email,
+            ...(useRecaptcha() && { 'g-recaptcha-response': recaptchaToken() }),
           },
-          { publicKey },
+          // Anti-spam : pas d'envoi depuis un navigateur automatisé, au plus un message toutes les 10 s.
+          { publicKey, blockHeadless: true, limitRate: { id: 'contact', throttle: 10000 } },
         );
         form.reset();
         touched.clear();
@@ -1422,6 +1479,8 @@ const Contact = (() => {
         setStatus('error');
       } finally {
         setLoading(false);
+        // Une réponse reCAPTCHA ne sert qu'une fois : nouvelle case à cocher pour le message suivant.
+        if (recaptchaId !== null) window.grecaptcha.reset(recaptchaId);
       }
     });
   }

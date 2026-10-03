@@ -67,9 +67,16 @@ Après une modification, rechargez simplement la page, puis lancez `node tools/p
 
 ## Formulaire de contact (EmailJS)
 
-1. Créez un compte sur [emailjs.com](https://www.emailjs.com), ajoutez un service email et un template.
-2. Dans le template, utilisez les variables `{{from_name}}`, `{{reply_to}}`, `{{subject}}`, `{{message}}`.
-3. Renseignez le bloc `EMAILJS` dans `js/data.js` :
+1. Créez un compte gratuit sur [emailjs.com](https://www.emailjs.com).
+2. **Email Services → Add New Service → Gmail** : connectez votre boîte Gmail, puis notez le **Service ID**.
+3. **Email Templates → Create New Template**, puis remplissez :
+   - **Subject** : `[Portfolio] {{subject}}`
+   - **Content** : `Nom : {{from_name}}`, `Email : {{reply_to}}`, `Sujet : {{subject}}`, puis `{{message}}`
+   - **To Email** : votre adresse · **From Name** : `{{from_name}} (portfolio)` · **Reply To** : `{{reply_to}}`
+
+   « Reply To » permet de répondre au visiteur directement depuis Gmail. Enregistrez et notez le **Template ID**.
+4. **Account → General** : copiez la **Public Key**.
+5. Renseignez le bloc `EMAILJS` dans `js/data.js` :
 
    ```js
    const EMAILJS = {
@@ -79,10 +86,13 @@ Après une modification, rechargez simplement la page, puis lancez `node tools/p
    };
    ```
 
-4. Dans le tableau de bord EmailJS, limitez les domaines autorisés à `safidyherimampianina.github.io`.
+6. **Account → Security → Domains** : autorisez seulement `https://safidyherimampianina.github.io`.
 
 La clé publique EmailJS est prévue pour être visible côté navigateur. Tant que la configuration est vide,
-le formulaire valide les champs puis propose d'écrire directement par email. Un champ piège (honeypot) filtre les robots.
+le formulaire valide les champs puis propose d'écrire directement par email. Contre le spam : un champ piège
+(honeypot), aucun envoi depuis un navigateur automatisé et au plus un message toutes les 10 secondes.
+Pour tester en local, ouvrez le site via un petit serveur (`python3 -m http.server`) plutôt qu'en double-cliquant
+sur `index.html`, et autorisez aussi cette adresse locale dans **Domains** le temps du test.
 
 ## Fonctionnalités
 

@@ -103,7 +103,7 @@
               "@id": "https://safidyherimampianina.github.io/#person"
             },
             "dateCreated": "2026-10-01",
-            "dateModified": "2026-10-02"
+            "dateModified": "2026-10-03"
           },
           {
             "@type": "Person",
@@ -1021,6 +1021,15 @@
                 <div class="hp" aria-hidden="true">
                   <label for="f-website">Website</label>
                   <input id="f-website" name="website" tabindex="-1" autocomplete="off" />
+                </div>
+                <div class="field field--human">
+                  <label class="human" for="f-human">
+                    <input id="f-human" name="human" type="checkbox" aria-describedby="f-human-err" />
+                    <span class="human__box" aria-hidden="true"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5" /></svg></span>
+                    <span data-i18n="contact.human">I’m not a robot</span>
+                  </label>
+                  <div class="recaptcha" id="recaptcha" hidden></div>
+                  <p class="field__error" id="f-human-err"></p>
                 </div>
                 <div class="contact__actions">
                   <button type="submit" class="btn btn--primary magnetic" id="submit-btn">
