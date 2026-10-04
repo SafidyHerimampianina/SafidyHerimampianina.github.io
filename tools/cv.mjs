@@ -27,6 +27,8 @@ const colon = (lang) => (lang === 'fr' ? ' :' : ':');
 const lowerFirst = (s) => (/^\p{Lu}\p{Ll}/u.test(s) ? s[0].toLocaleLowerCase() + s.slice(1) : s);
 /** Études de cas d'un même client : dans le titre d'une mission ou le nom d'une entreprise. */
 const casesFor = (text) => projects.filter((p) => text.includes(p.client));
+/** Étude de cas d'une mission : celle indiquée par `project`, sinon par le client cité dans le titre. */
+const missionCases = (m, lang) => (m.project ? projects.filter((p) => p.id === m.project) : casesFor(l(m.title, lang)));
 const caseURL = (p, lang) => `${SITE}${seo.projects[lang]}/${p.id}/`;
 
 /* ════════════════════ blocs ════════════════════ */
@@ -54,7 +56,7 @@ function when(e, lang) {
 function experience(e, lang) {
   const missions = (e.missions ?? [])
     .map((m) => {
-      const cases = casesFor(l(m.title, lang));
+      const cases = missionCases(m, lang);
       return `<div class="mission">
           ${head('h4', l(m.title, lang), l(m.period, lang), cases.length === 1 ? caseURL(cases[0], lang) : '')}
           ${list(l(m.highlights, lang), cases, lang)}
@@ -66,7 +68,7 @@ function experience(e, lang) {
         ${head('h3', l(e.role, lang), when(e, lang))}
         <p class="org">${escText(e.company)} · ${escText(l(e.location, lang))}</p>
         ${e.summary ? `<p class="summary">${escText(l(e.summary, lang))}</p>` : ''}
-        ${list(l(e.highlights, lang), casesFor(e.company), lang)}
+        ${list(l(e.highlights, lang), casesFor(e.company).filter((p) => !(e.missions ?? []).some((m) => m.project === p.id)), lang)}
         ${stack(e.stack, lang)}
         ${missions ? `<p class="label">${escText(t('experience.missions', lang))}</p>${missions}` : ''}
       </article>`;

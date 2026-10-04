@@ -693,6 +693,26 @@ const experiences = [
     stack: ['Java', 'Spring Boot', 'React', 'JSP', 'MySQL', 'PostgreSQL', 'Oracle', 'Docker', 'Git', 'CI/CD', 'WebSockets'],
     missions: [
       {
+        title: { fr: 'ASYNC — ERP de gestion d’entreprise', en: 'ASYNC — business management ERP' },
+        project: 'async', // étude de cas liée dans le CV
+        period: { fr: '2024 – aujourd’hui', en: '2024 – present' },
+        highlights: {
+          fr: [
+            'ERP interne développé chez BICI, depuis le lancement du projet en 2024',
+            'Participation au développement de tous les modules : ventes, achats, stock, caisse, comptabilité, tiers, gestion électronique des documents',
+            'Tableau de bord de pilotage : chiffre d’affaires, ventes du jour, de la semaine et du mois, courbe d’évolution',
+            'Modules d’analyse, de prévision, de rapports et d’historique ; recherche globale et listes configurables',
+          ],
+          en: [
+            'Internal ERP built at BICI, since the project started in 2024',
+            'Contributed to every module: sales, purchasing, inventory, cash desk, accounting, third parties, document management',
+            'Management dashboard: revenue, sales for the day, week and month, trend chart',
+            'Analysis, forecasting, reporting and history modules; global search and configurable lists',
+          ],
+        },
+        stack: ['Java', 'JEE', 'JSP', 'JavaScript', 'HTML/CSS'],
+      },
+      {
         title: { fr: 'Ketrika.com — e-commerce & billetterie en ligne', en: 'Ketrika.com — e-commerce & online ticketing' },
         period: { fr: '2024 – aujourd’hui', en: '2024 – present' },
         highlights: {
@@ -959,12 +979,12 @@ const seo = {
  */
 const cv = {
   headline: {
-    fr: 'Développeur Full Stack Senior · Java / Spring Boot · React · CI/CD',
-    en: 'Senior Full Stack Developer · Java / Spring Boot · React · CI/CD',
+    fr: 'Développeur Full Stack Senior · Java / Spring Boot · React',
+    en: 'Senior Full Stack Developer · Java / Spring Boot · React',
   },
   summary: {
-    fr: 'Développeur Full Stack senior avec plus de six ans d’expérience dans la conception, le développement et la mise en production d’applications web métier : back-offices institutionnels, plateformes e-commerce, automatisation et pipelines DevOps. Spécialiste Java / Spring Boot et React, je prends en charge un projet de bout en bout, de l’analyse du besoin à la mise en ligne et à la maintenance (Docker, CI/CD). Habitué au full remote avec la France, je travaille en français comme en anglais, sur des horaires communs avec l’Europe.',
-    en: 'Senior Full Stack developer with more than six years of experience designing, building and shipping business web applications: institutional back-offices, e-commerce platforms, automation and DevOps pipelines. Specialised in Java / Spring Boot and React, I own projects end to end, from requirements analysis to release and maintenance (Docker, CI/CD). Experienced in fully remote work with France, I work in English and French, on hours that overlap with Europe.',
+    fr: 'Développeur Full Stack senior avec plus de six ans d’expérience dans la conception, le développement et la mise en production d’applications web métier : ERP, back-offices institutionnels, plateformes e-commerce et automatisation. Spécialiste Java / Spring Boot et React, je prends en charge un projet de bout en bout, de l’analyse du besoin à la mise en ligne et à la maintenance (Docker, CI/CD). Habitué au full remote avec la France, je travaille en français comme en anglais, sur des horaires communs avec l’Europe.',
+    en: 'Senior Full Stack developer with more than six years of experience designing, building and shipping business web applications: ERP, institutional back-offices, e-commerce platforms and automation. Specialised in Java / Spring Boot and React, I own projects end to end, from requirements analysis to release and maintenance (Docker, CI/CD). Experienced in fully remote work with France, I work in English and French, on hours that overlap with Europe.',
   },
   // Catégories de skillCategories reprises dans le CV, dans cet ordre.
   skills: ['backend', 'frontend', 'database', 'devops', 'mobile', 'tools', 'methods'],
