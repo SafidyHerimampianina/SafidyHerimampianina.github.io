@@ -2886,7 +2886,8 @@ html.lenis body {
 .recaptcha {
   min-height: 78px;
 }
-@media (max-width: 380px) {
+/* Le widget fait 304 px : réduit dès que la carte du formulaire est plus étroite */
+@media (max-width: 420px) {
   .recaptcha {
     transform: scale(0.9);
     transform-origin: left top;
@@ -3496,8 +3497,11 @@ kbd {
     text-align: left;
   }
   .pipeline__node {
-    grid-row: span 3;
+    grid-row: span 4;
     margin: 0;
+  }
+  .pipeline__step > :not(.pipeline__node) {
+    grid-column: 2;
   }
   .pipeline__pulse {
     display: none;
@@ -3529,12 +3533,26 @@ kbd {
     border-left: 0;
     border-top: 1px solid var(--frame);
   }
+  /* Une colonne : chaque carte prend la hauteur de sa capture (16:10), sans recadrage */
   .projects {
     grid-template-columns: minmax(0, 1fr);
-    grid-auto-rows: 150px;
+    grid-auto-rows: auto;
   }
-  .project--wide {
+  .project,
+  .project--wide,
+  .project--tall,
+  .project--full {
     grid-column: auto;
+    grid-row: auto;
+  }
+  .project__cover {
+    flex: none;
+    aspect-ratio: 16 / 10;
+  }
+  /* Libellés longs des compétences : retour à la ligne plutôt que « … » */
+  .chip span:last-child {
+    white-space: normal;
+    overflow-wrap: anywhere;
   }
   .field-row,
   .contact__facts {
