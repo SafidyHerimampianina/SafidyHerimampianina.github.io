@@ -771,7 +771,7 @@ const Render = (() => {
       .filter((p) => state.projectFilter === 'all' || p.category === state.projectFilter)
       .map(
         (p, i, list) => `
-        <li class="project project--${p.size}${i === list.length - 1 && list.filter((x) => x.size !== 'wide').length % 2 ? ' project--fill' : ''}" style="--i:${i}">
+        <li class="project project--${p.size}${i === list.length - 1 && list.filter((x) => x.size !== 'wide' && x.size !== 'full').length % 2 ? ' project--fill' : ''}" style="--i:${i}">
           <div class="project__cover">${mockHTML(p)}</div>
           <div class="project__caption">
             <h3 class="project__title"><a href="${projectHref(p)}" data-project="${p.id}" aria-haspopup="dialog">${esc(l(p.title))}</a></h3>

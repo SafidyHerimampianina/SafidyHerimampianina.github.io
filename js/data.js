@@ -320,14 +320,65 @@ const projectFilters = [
 ];
 
 /**
- * Études de cas. `size` pilote la grille : 'wide' (2 colonnes), 'tall' (2 lignes) ou 'normal'.
+ * Études de cas. `size` pilote la grille : 'full' (toute la largeur), 'wide' (2 colonnes), 'tall' (2 lignes) ou 'normal'.
  * `image` (optionnel) : chemin d'une capture dans assets/img/projects/ ; sinon une maquette CSS est générée.
  * `demoUrl` / `codeUrl` vides = boutons masqués.
  */
 const projects = [
   {
-    id: 'omapi',
+    id: 'async',
     featured: true,
+    category: 'web',
+    size: 'full',
+    title: { fr: 'ASYNC — ERP de gestion d’entreprise', en: 'ASYNC — business management ERP' },
+    client: 'BICI',
+    year: { fr: '2024 – aujourd’hui', en: '2024 – present' },
+    cover: { from: '#262d36', to: '#c2652a', mock: 'dashboard' },
+    image: 'assets/img/projects/async.webp',
+    summary: {
+      fr: 'ERP complet développé chez BICI : ventes, achats, stock, caisse, comptabilité et pilotage réunis dans une seule application.',
+      en: 'A full ERP built at BICI: sales, purchasing, inventory, cash desk, accounting and reporting in a single application.',
+    },
+    context: {
+      fr: 'Projet interne de BICI : ASYNC est un ERP qui rassemble toute la gestion d’une entreprise dans un seul outil, des ventes à la comptabilité.',
+      en: 'An internal BICI project: ASYNC is an ERP that brings all of a company’s management into one tool, from sales to accounting.',
+    },
+    problem: {
+      fr: 'Couvrir tous les métiers de l’entreprise (ventes, achats, stock, caisse, comptabilité) dans une même application, avec des données partagées entre les modules.',
+      en: 'Covering every business function (sales, purchasing, inventory, cash desk, accounting) in one application, with data shared across modules.',
+    },
+    solution: {
+      fr: [
+        'ERP modulaire : ventes, achats, stock, caisse, comptabilité, tiers, gestion électronique des documents et archives',
+        'Tableau de bord : chiffre d’affaires, ventes du jour, de la semaine et du mois, courbe d’évolution',
+        'Modules d’analyse, de prévision, de rapports et d’historique pour piloter l’activité',
+        'Recherche globale, filtres par période et colonnes configurables sur les listes',
+        'Assistant IA intégré à l’application',
+        'Back-end Java / JEE et interfaces JSP',
+      ],
+      en: [
+        'Modular ERP: sales, purchasing, inventory, cash desk, accounting, third parties, document management and archives',
+        'Dashboard: revenue, sales for the day, week and month, and a trend chart',
+        'Analysis, forecasting, reporting and history modules to steer the business',
+        'Global search, date-range filters and configurable columns on lists',
+        'Built-in AI assistant',
+        'Java / JEE back-end and JSP interfaces',
+      ],
+    },
+    role: {
+      fr: 'Développeur full stack depuis le lancement du projet en 2024 : participation au développement de tous les modules, du back-end aux écrans.',
+      en: 'Full stack developer since the project started in 2024: contributed to every module, from the back-end to the screens.',
+    },
+    result: {
+      fr: 'Un seul outil pour gérer et suivre toute l’activité de l’entreprise, avec les indicateurs clés dès la page d’accueil.',
+      en: 'One tool to run and track the whole business, with key indicators right on the home page.',
+    },
+    stack: ['Java', 'JEE', 'JSP', 'JavaScript', 'HTML/CSS'],
+    demoUrl: '',
+    codeUrl: '',
+  },
+  {
+    id: 'omapi',
     category: 'web',
     size: 'wide',
     title: { fr: 'Back-office OMAPI', en: 'OMAPI back-office' },
@@ -890,6 +941,8 @@ const seo = {
   home: { fr: '', en: 'en.html' },
   // Dossier des pages « étude de cas » : projets/<id>/ en français, projects/<id>/ en anglais.
   projects: { fr: 'projets', en: 'projects' },
+  // Nom du site dans les résultats Google (à la place de « GitHub ») : name = prénom + nom, puis variantes.
+  siteAlternateNames: ['Safidy H.', 'Safidy Herimampianina — Portfolio'],
   sameAs: ['https://www.linkedin.com/in/safidy-herimampianina-0170321a4/', 'https://github.com/SafidyHerimampianina'],
   knowsLanguage: ['mg', 'fr', 'en'],
   nationality: 'Madagascar',

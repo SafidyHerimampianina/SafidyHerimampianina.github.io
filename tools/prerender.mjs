@@ -159,7 +159,7 @@ function personNode(lang) {
 function homeGraph(lang, date) {
   const url = homeURL(lang);
   return [
-    { '@type': 'WebSite', ...WEBSITE, url: SITE, name: NAME, inLanguage: LANGS, publisher: PERSON },
+    { '@type': 'WebSite', ...WEBSITE, url: SITE, name: NAME, alternateName: seo.siteAlternateNames, inLanguage: LANGS, publisher: PERSON },
     {
       '@type': 'ProfilePage',
       '@id': `${url}#profile`,

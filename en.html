@@ -13,9 +13,9 @@
     <link rel="alternate" hreflang="fr" href="https://safidyherimampianina.github.io/" />
     <link rel="alternate" hreflang="en" href="https://safidyherimampianina.github.io/en.html" />
     <link rel="alternate" hreflang="x-default" href="https://safidyherimampianina.github.io/" />
+    <link rel="icon" href="assets/img/icons/icon-192.png" type="image/png" sizes="192x192" />
     <link rel="icon" href="favicon.ico" sizes="48x48" />
     <link rel="icon" href="favicon.svg" type="image/svg+xml" />
-    <link rel="icon" href="assets/img/icons/icon-192.png" type="image/png" sizes="192x192" />
     <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png" />
     <link rel="manifest" href="site.webmanifest" />
 
@@ -81,6 +81,10 @@
             "@id": "https://safidyherimampianina.github.io/#website",
             "url": "https://safidyherimampianina.github.io/",
             "name": "Safidy Herimampianina",
+            "alternateName": [
+              "Safidy H.",
+              "Safidy Herimampianina — Portfolio"
+            ],
             "inLanguage": [
               "fr",
               "en"
@@ -103,7 +107,7 @@
               "@id": "https://safidyherimampianina.github.io/#person"
             },
             "dateCreated": "2026-10-01",
-            "dateModified": "2026-10-03"
+            "dateModified": "2026-10-04"
           },
           {
             "@type": "Person",
@@ -200,42 +204,48 @@
               {
                 "@type": "ListItem",
                 "position": 1,
+                "url": "https://safidyherimampianina.github.io/projects/async/",
+                "name": "ASYNC — business management ERP"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
                 "url": "https://safidyherimampianina.github.io/projects/omapi/",
                 "name": "OMAPI back-office"
               },
               {
                 "@type": "ListItem",
-                "position": 2,
+                "position": 3,
                 "url": "https://safidyherimampianina.github.io/projects/supermarche/",
                 "name": "Supermarche.mg & Express.mg e-commerce"
               },
               {
                 "@type": "ListItem",
-                "position": 3,
+                "position": 4,
                 "url": "https://safidyherimampianina.github.io/projects/ketrika/",
                 "name": "Ketrika.com e-commerce & ticketing"
               },
               {
                 "@type": "ListItem",
-                "position": 4,
+                "position": 5,
                 "url": "https://safidyherimampianina.github.io/projects/stock/",
                 "name": "PO-BOT — automatic supplier purchase orders"
               },
               {
                 "@type": "ListItem",
-                "position": 5,
+                "position": 6,
                 "url": "https://safidyherimampianina.github.io/projects/safram/",
                 "name": "CI/CD pipelines & Azure Functions — SAFRAM"
               },
               {
                 "@type": "ListItem",
-                "position": 6,
+                "position": 7,
                 "url": "https://safidyherimampianina.github.io/projects/reporting/",
                 "name": "Google Data Studio business reporting"
               },
               {
                 "@type": "ListItem",
-                "position": 7,
+                "position": 8,
                 "url": "https://safidyherimampianina.github.io/projects/inother/",
                 "name": "Inother e-commerce platform"
               }
@@ -343,7 +353,7 @@
       </li>
       <li>
         <a class="nav__link" href="#work" data-scroll="work" data-nav="work" aria-describedby="nav-d-work">Work</a>
-        <div class="nav__preview" id="nav-d-work" role="tooltip"><strong>Work</strong><span>7 case studies · OMAPI, Supermarche.mg, Ketrika.com</span></div>
+        <div class="nav__preview" id="nav-d-work" role="tooltip"><strong>Work</strong><span>8 case studies · BICI, OMAPI, Supermarche.mg</span></div>
       </li>
       <li>
         <a class="nav__link" href="#experience" data-scroll="experience" data-nav="experience" aria-describedby="nav-d-experience">Experience</a>
@@ -646,19 +656,27 @@
               <p class="mono-text" data-i18n="work.intro">Institutional back-offices, e-commerce, automation and DevOps pipelines: business applications designed, shipped and maintained in production for local and international clients.</p>
             </div>
             <div class="featured reveal" id="featured"><!--pre-->
-      <div class="featured__device" aria-hidden="true"><div class="mock-cover" style="--from:#2c333d;--to:#c2652a"><img src="assets/img/projects/omapi.webp" alt="OMAPI back-office" loading="lazy" decoding="async" width="1600" height="1000"></div></div>
+      <div class="featured__device" aria-hidden="true"><div class="mock-cover" style="--from:#262d36;--to:#c2652a"><img src="assets/img/projects/async.webp" alt="ASYNC — business management ERP" loading="lazy" decoding="async" width="1600" height="1000"></div></div>
       <svg class="featured__arrow" viewBox="0 0 120 70" fill="none" aria-hidden="true">
         <path d="M8 62 C 30 60, 70 50, 104 12" stroke="currentColor" stroke-width="5" stroke-linecap="round"></path>
         <path d="M84 12 L106 8 L102 30" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"></path>
       </svg>
       <p class="featured__label">Featured project</p>
-      <p class="featured__title">OMAPI back-office</p>
-      <button type="button" class="btn btn--primary magnetic" data-project="omapi">View project</button><!--/pre--></div>
+      <p class="featured__title">ASYNC — business management ERP</p>
+      <button type="button" class="btn btn--primary magnetic" data-project="async">View project</button><!--/pre--></div>
           </div>
 
-          <div class="work__filters reveal" role="group" id="project-filters" aria-label="Filter by" data-i18n-attr="aria-label:work.filterBy"><!--pre--><span class="label">Filter by</span><button type="button" data-project-filter="all" aria-pressed="true">All<sup>07</sup></button><span class="sep" aria-hidden="true">/</span><button type="button" data-project-filter="web" aria-pressed="false">Web applications<sup>04</sup></button><span class="sep" aria-hidden="true">/</span><button type="button" data-project-filter="data" aria-pressed="false">Data &amp; automation<sup>02</sup></button><span class="sep" aria-hidden="true">/</span><button type="button" data-project-filter="devops" aria-pressed="false">DevOps &amp; Cloud<sup>01</sup></button><!--/pre--></div>
+          <div class="work__filters reveal" role="group" id="project-filters" aria-label="Filter by" data-i18n-attr="aria-label:work.filterBy"><!--pre--><span class="label">Filter by</span><button type="button" data-project-filter="all" aria-pressed="true">All<sup>08</sup></button><span class="sep" aria-hidden="true">/</span><button type="button" data-project-filter="web" aria-pressed="false">Web applications<sup>05</sup></button><span class="sep" aria-hidden="true">/</span><button type="button" data-project-filter="data" aria-pressed="false">Data &amp; automation<sup>02</sup></button><span class="sep" aria-hidden="true">/</span><button type="button" data-project-filter="devops" aria-pressed="false">DevOps &amp; Cloud<sup>01</sup></button><!--/pre--></div>
           <ul class="projects" id="projects"><!--pre-->
-        <li class="project project--wide" style="--i:0">
+        <li class="project project--full" style="--i:0">
+          <div class="project__cover"><div class="mock-cover" style="--from:#262d36;--to:#c2652a"><img src="assets/img/projects/async.webp" alt="ASYNC — business management ERP" loading="lazy" decoding="async" width="1600" height="1000"></div></div>
+          <div class="project__caption">
+            <h3 class="project__title"><a href="projects/async/" data-project="async" aria-haspopup="dialog">ASYNC — business management ERP</a></h3>
+            <p class="project__meta">Web applications · BICI · 2024 – present</p>
+          </div>
+          <span class="project__glare" aria-hidden="true"></span>
+        </li>
+        <li class="project project--wide" style="--i:1">
           <div class="project__cover"><div class="mock-cover" style="--from:#2c333d;--to:#c2652a"><img src="assets/img/projects/omapi.webp" alt="OMAPI back-office" loading="lazy" decoding="async" width="1600" height="1000"></div></div>
           <div class="project__caption">
             <h3 class="project__title"><a href="projects/omapi/" data-project="omapi" aria-haspopup="dialog">OMAPI back-office</a></h3>
@@ -666,7 +684,7 @@
           </div>
           <span class="project__glare" aria-hidden="true"></span>
         </li>
-        <li class="project project--tall" style="--i:1">
+        <li class="project project--tall" style="--i:2">
           <div class="project__cover"><div class="mock-cover mock-store" style="--from:#1f3a2c;--to:#16a34a"><span class="mock-store__icon"><svg class="icon " width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="8" cy="21" r="1"></circle><circle cx="19" cy="21" r="1"></circle><path d="M2 2h2l2.7 12.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L22 7H5.1"></path></svg></span><span class="mock-store__label">Online store</span><div class="mock-store__domains"><span>supermarche.mg</span><span>express.mg</span></div></div></div>
           <div class="project__caption">
             <h3 class="project__title"><a href="projects/supermarche/" data-project="supermarche" aria-haspopup="dialog">Supermarche.mg &amp; Express.mg e-commerce</a></h3>
@@ -674,7 +692,7 @@
           </div>
           <span class="project__glare" aria-hidden="true"></span>
         </li>
-        <li class="project project--wide" style="--i:2">
+        <li class="project project--wide" style="--i:3">
           <div class="project__cover"><div class="mock-cover" style="--from:#2c333d;--to:#d9823f"><img src="assets/img/projects/ketrika.webp" alt="Ketrika.com e-commerce &amp; ticketing" loading="lazy" decoding="async" width="1600" height="1000"></div></div>
           <div class="project__caption">
             <h3 class="project__title"><a href="projects/ketrika/" data-project="ketrika" aria-haspopup="dialog">Ketrika.com e-commerce &amp; ticketing</a></h3>
@@ -682,7 +700,7 @@
           </div>
           <span class="project__glare" aria-hidden="true"></span>
         </li>
-        <li class="project project--tall" style="--i:3">
+        <li class="project project--tall" style="--i:4">
           <div class="project__cover"><div class="mock-cover" style="--from:#262d36;--to:#9a4316"><img src="assets/img/projects/po-bot.webp" alt="PO-BOT — automatic supplier purchase orders" loading="lazy" decoding="async" width="1600" height="1000" style="object-position:10% 50%"></div></div>
           <div class="project__caption">
             <h3 class="project__title"><a href="projects/stock/" data-project="stock" aria-haspopup="dialog">PO-BOT — automatic supplier purchase orders</a></h3>
@@ -690,7 +708,7 @@
           </div>
           <span class="project__glare" aria-hidden="true"></span>
         </li>
-        <li class="project project--normal" style="--i:4">
+        <li class="project project--normal" style="--i:5">
           <div class="project__cover"><div class="mock-cover" style="--from:#36404c;--to:#d9823f"><img src="assets/img/projects/safram.webp" alt="CI/CD pipelines &amp; Azure Functions — SAFRAM" loading="lazy" decoding="async" width="1600" height="1000"></div></div>
           <div class="project__caption">
             <h3 class="project__title"><a href="projects/safram/" data-project="safram" aria-haspopup="dialog">CI/CD pipelines &amp; Azure Functions — SAFRAM</a></h3>
@@ -698,7 +716,7 @@
           </div>
           <span class="project__glare" aria-hidden="true"></span>
         </li>
-        <li class="project project--normal" style="--i:5">
+        <li class="project project--normal" style="--i:6">
           <div class="project__cover"><div class="mock-cover" style="--from:#2c333d;--to:#e8843f"><img src="assets/img/projects/reporting.webp" alt="Google Data Studio business reporting" loading="lazy" decoding="async" width="1600" height="1000"></div></div>
           <div class="project__caption">
             <h3 class="project__title"><a href="projects/reporting/" data-project="reporting" aria-haspopup="dialog">Google Data Studio business reporting</a></h3>
@@ -706,7 +724,7 @@
           </div>
           <span class="project__glare" aria-hidden="true"></span>
         </li>
-        <li class="project project--normal project--fill" style="--i:6">
+        <li class="project project--normal project--fill" style="--i:7">
           <div class="project__cover"><div class="mock-cover" style="--from:#262d36;--to:#c96a2e"><img src="assets/img/projects/inother.webp" alt="Inother e-commerce platform" loading="lazy" decoding="async" width="1600" height="1000"></div></div>
           <div class="project__caption">
             <h3 class="project__title"><a href="projects/inother/" data-project="inother" aria-haspopup="dialog">Inother e-commerce platform</a></h3>

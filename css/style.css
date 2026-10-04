@@ -1846,6 +1846,10 @@ html.lenis body {
   grid-column: span 2;
   grid-row: span 3;
 }
+.project--full {
+  grid-column: 1 / -1;
+  grid-row: span 3;
+}
 .project--tall {
   grid-row: span 3;
 }
