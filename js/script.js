@@ -1504,7 +1504,7 @@ const Main = (() => {
   const { initCounters, initLevels, initMagnetic, initReveal, initScrollEffects, initTilt, splitText, typewriter } = Effects;
   const { applyStaticTranslations, getLang, onLangChange, setLang } = I18n;
   const { closeProject, initModal, openProject, refreshProject } = Modal;
-  const { initPalette, open: openPalette } = Palette;
+  const { initPalette } = Palette;
   const { NAV, renderAll, setProjectFilter, setSkillFilter, toggleAccordion } = Render;
   const { initSmoothScroll, lockScroll, scrollToId } = Scroll;
   const { $, $$, copyText, icon, reducedMotion, trapFocus } = Utils;
@@ -1648,7 +1648,6 @@ const Main = (() => {
     });
 
     burger.addEventListener('click', () => setMenu(!nav.classList.contains('is-open')));
-    $('#palette-trigger').addEventListener('click', openPalette);
     document.addEventListener('keydown', (e) => e.key === 'Escape' && setMenu(false));
     window.matchMedia('(min-width: 1101px)').addEventListener('change', (m) => m.matches && setMenu(false));
   }
@@ -1684,7 +1683,6 @@ const Main = (() => {
   initScrollEffects();
   initIndicator();
   initScrollSpy();
-  $('#kbd-hint').textContent = /Mac|iPhone|iPad/.test(navigator.platform) ? '⌘ K' : 'Ctrl K';
   initModal();
   initCounters();
   initLevels();

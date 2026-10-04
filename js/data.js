@@ -17,8 +17,8 @@ const profile = {
   initials: 'SH',
   title: { fr: 'Développeur Full Stack Senior', en: 'Senior Full Stack Developer' },
   heroLine: {
-    fr: 'Développeur Full Stack Senior · Java & React · Full remote depuis Madagascar',
-    en: 'Senior Full Stack Developer · Java & React · Fully remote from Madagascar',
+    fr: 'Développeur Full Stack Senior · Java / Spring Boot · Full remote depuis Madagascar',
+    en: 'Senior Full Stack Developer · Java / Spring Boot · Fully remote from Madagascar',
   },
   roles: ['Full Stack Developer', 'Java / Spring Boot', 'React', 'DevOps & CI/CD'],
   // Phrase d'accroche affichée en grand dans « À propos ».
@@ -43,8 +43,8 @@ const profile = {
   photoSmall: 'assets/img/portrait-dark-560.webp',
   yearsOfExperience: 6,
   about: {
-    fr: 'Depuis plus de six ans, j’accompagne entreprises et organisations, à Madagascar comme en France, dans la création de leurs applications métier, plateformes e-commerce et outils internes. Je prends en charge tout le projet : comprendre votre besoin, concevoir la solution, la développer, la mettre en ligne et la faire évoluer. Vous avez un seul interlocuteur, en français ou en anglais, qui vous tient informé à chaque étape. Basé à Antananarivo (GMT+3), je travaille en full remote sur des horaires communs avec l’Europe, et je m’intègre rapidement à une stack Java / Spring Boot, React et CI/CD existante.',
-    en: 'For more than six years, I have helped companies and organisations, in Madagascar and in France, build their business applications, e-commerce platforms and internal tools. I take care of the whole project: understanding your needs, designing the solution, building it, launching it and improving it over time. You get a single point of contact, in English or French, who keeps you informed at every step. Based in Antananarivo (GMT+3), I work fully remote on hours that overlap with Europe, and I quickly fit into an existing Java / Spring Boot, React and CI/CD stack.',
+    fr: 'Depuis plus de six ans, j’accompagne entreprises et organisations, à Madagascar comme en France, dans la création de leurs applications métier, plateformes e-commerce et outils internes. Je prends en charge tout le projet : comprendre votre besoin, concevoir la solution, la développer, la mettre en ligne et la faire évoluer. Vous avez un seul interlocuteur, en français ou en anglais, qui vous tient informé à chaque étape. Basé à Antananarivo (GMT+3), je travaille en full remote sur des horaires communs avec l’Europe, et je m’intègre rapidement à une stack Java / Spring Boot existante.',
+    en: 'For more than six years, I have helped companies and organisations, in Madagascar and in France, build their business applications, e-commerce platforms and internal tools. I take care of the whole project: understanding your needs, designing the solution, building it, launching it and improving it over time. You get a single point of contact, in English or French, who keeps you informed at every step. Based in Antananarivo (GMT+3), I work fully remote on hours that overlap with Europe, and I quickly fit into an existing Java / Spring Boot stack.',
   },
   // Laissez href vide pour masquer un lien.
   socials: [
@@ -979,12 +979,12 @@ const seo = {
  */
 const cv = {
   headline: {
-    fr: 'Développeur Full Stack Senior · Java / Spring Boot · React',
-    en: 'Senior Full Stack Developer · Java / Spring Boot · React',
+    fr: 'Développeur Full Stack Senior · Java / Spring Boot',
+    en: 'Senior Full Stack Developer · Java / Spring Boot',
   },
   summary: {
-    fr: 'Développeur Full Stack senior avec plus de six ans d’expérience dans la conception, le développement et la mise en production d’applications web métier : ERP, back-offices institutionnels, plateformes e-commerce et automatisation. Spécialiste Java / Spring Boot et React, je prends en charge un projet de bout en bout, de l’analyse du besoin à la mise en ligne et à la maintenance (Docker, CI/CD). Habitué au full remote avec la France, je travaille en français comme en anglais, sur des horaires communs avec l’Europe.',
-    en: 'Senior Full Stack developer with more than six years of experience designing, building and shipping business web applications: ERP, institutional back-offices, e-commerce platforms and automation. Specialised in Java / Spring Boot and React, I own projects end to end, from requirements analysis to release and maintenance (Docker, CI/CD). Experienced in fully remote work with France, I work in English and French, on hours that overlap with Europe.',
+    fr: 'Développeur Full Stack senior avec plus de six ans d’expérience dans la conception, le développement et la mise en production d’applications web métier : ERP, back-offices institutionnels, plateformes e-commerce et automatisation. Spécialiste Java / Spring Boot, je prends en charge un projet de bout en bout, de l’analyse du besoin à la mise en ligne et à la maintenance (Docker, CI/CD). Habitué au full remote avec la France, je travaille en français comme en anglais, sur des horaires communs avec l’Europe.',
+    en: 'Senior Full Stack developer with more than six years of experience designing, building and shipping business web applications: ERP, institutional back-offices, e-commerce platforms and automation. Specialised in Java / Spring Boot, I own projects end to end, from requirements analysis to release and maintenance (Docker, CI/CD). Experienced in fully remote work with France, I work in English and French, on hours that overlap with Europe.',
   },
   // Catégories de skillCategories reprises dans le CV, dans cet ordre.
   skills: ['backend', 'frontend', 'database', 'devops', 'mobile', 'tools', 'methods'],
@@ -1020,9 +1020,9 @@ const EMAILJS = {
  */
 const UI_STRINGS = {
   fr: {
-    'meta.title': 'Développeur Full Stack en full remote à Madagascar · Java & React | Safidy Herimampianina',
+    'meta.title': 'Développeur Full Stack en full remote à Madagascar · Java / Spring Boot | Safidy Herimampianina',
     'meta.description':
-      'Développeur Full Stack senior en full remote depuis Madagascar : Java / Spring Boot, React, CI/CD. 6+ ans d’expérience. Freelance ou poste à distance.',
+      'Développeur Full Stack senior en full remote depuis Madagascar : Java / Spring Boot. 6+ ans d’expérience. Freelance ou poste à distance.',
     'meta.imageAlt': 'Safidy Herimampianina, développeur Full Stack senior en full remote depuis Madagascar',
     'a11y.skip': 'Aller au contenu',
     'a11y.menu': 'Ouvrir le menu',
@@ -1064,7 +1064,7 @@ const UI_STRINGS = {
     'hero.ctaContact': 'Me contacter',
     'expertise.title': 'Services de développement Full Stack',
     'expertise.intro':
-      'Entreprises : je livre des applications qui font gagner du temps à vos équipes. Équipes tech : je rejoins votre stack Java / Spring Boot, React et CI/CD, en full remote.',
+      'Entreprises : je livre des applications qui font gagner du temps à vos équipes. Équipes tech : je rejoins votre stack Java / Spring Boot, en full remote.',
     'expertise.levels': 'Points forts',
     'expertise.levelsHint': 'Prouvés sur des projets réels',
     'expertise.years': 'ans',
@@ -1162,9 +1162,9 @@ const UI_STRINGS = {
     'palette.hint': '↑↓ naviguer · ↵ valider · esc fermer',
   },
   en: {
-    'meta.title': 'Remote Full Stack Developer in Madagascar · Java & React | Safidy Herimampianina',
+    'meta.title': 'Remote Full Stack Developer in Madagascar · Java / Spring Boot | Safidy Herimampianina',
     'meta.description':
-      'Senior Full Stack developer working fully remote from Madagascar: Java / Spring Boot, React, CI/CD. 6+ years of experience. Freelance or remote position.',
+      'Senior Full Stack developer working fully remote from Madagascar: Java / Spring Boot. 6+ years of experience. Freelance or remote position.',
     'meta.imageAlt': 'Safidy Herimampianina, senior Full Stack developer working fully remote from Madagascar',
     'a11y.skip': 'Skip to content',
     'a11y.menu': 'Open menu',
@@ -1206,7 +1206,7 @@ const UI_STRINGS = {
     'hero.ctaContact': 'Get in touch',
     'expertise.title': 'Full Stack development services',
     'expertise.intro':
-      'Businesses: I deliver applications that save your teams time. Tech teams: I join your Java / Spring Boot, React and CI/CD stack, fully remote.',
+      'Businesses: I deliver applications that save your teams time. Tech teams: I join your Java / Spring Boot stack, fully remote.',
     'expertise.levels': 'Core strengths',
     'expertise.levelsHint': 'Proven on real projects',
     'expertise.years': 'yrs',
