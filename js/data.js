@@ -332,7 +332,7 @@ const projects = [
     size: 'full',
     title: { fr: 'ASYNC — ERP de gestion d’entreprise', en: 'ASYNC — business management ERP' },
     client: 'BICI',
-    year: { fr: '2024 – aujourd’hui', en: '2024 – present' },
+    year: { fr: '2024 – sept. 2026', en: '2024 – Sep 2026' },
     cover: { from: '#262d36', to: '#c2652a', mock: 'dashboard' },
     image: 'assets/img/projects/async.webp',
     summary: {
@@ -366,8 +366,8 @@ const projects = [
       ],
     },
     role: {
-      fr: 'Développeur full stack depuis le lancement du projet en 2024 : participation au développement de tous les modules, du back-end aux écrans.',
-      en: 'Full stack developer since the project started in 2024: contributed to every module, from the back-end to the screens.',
+      fr: 'Développeur full stack du lancement du projet en 2024 à septembre 2026 : participation au développement de tous les modules, du back-end aux écrans.',
+      en: 'Full stack developer from the project start in 2024 to September 2026: contributed to every module, from the back-end to the screens.',
     },
     result: {
       fr: 'Un seul outil pour gérer et suivre toute l’activité de l’entreprise, avec les indicateurs clés dès la page d’accueil.',
@@ -466,7 +466,7 @@ const projects = [
     size: 'wide',
     title: { fr: 'E-commerce & billetterie Ketrika.com', en: 'Ketrika.com e-commerce & ticketing' },
     client: 'Ketrika.com',
-    year: { fr: '2024 – aujourd’hui', en: '2024 – present' },
+    year: { fr: '2024 – sept. 2026', en: '2024 – Sep 2026' },
     cover: { from: '#2c333d', to: '#d9823f', mock: 'seats' },
     image: 'assets/img/projects/ketrika.webp',
     summary: {
@@ -498,8 +498,8 @@ const projects = [
       ],
     },
     role: {
-      fr: 'Mainteneur du projet depuis 2024 : développement front-end et back-end, de la refonte de l’interface aux API REST, puis maintenance et évolutions.',
-      en: 'Project maintainer since 2024: front-end and back-end development, from the interface redesign to the REST APIs, plus ongoing maintenance and improvements.',
+      fr: 'Mainteneur du projet de 2024 à septembre 2026 : développement front-end et back-end, de la refonte de l’interface aux API REST, puis maintenance et évolutions.',
+      en: 'Project maintainer from 2024 to September 2026: front-end and back-end development, from the interface redesign to the REST APIs, plus maintenance and improvements.',
     },
     result: {
       fr: 'Un parcours de réservation fluide et engageant, de meilleures performances et une meilleure satisfaction des utilisateurs.',
@@ -667,7 +667,7 @@ const experiences = [
     role: { fr: 'Développeur Full Stack', en: 'Full Stack Developer' },
     company: 'BICI',
     location: { fr: 'Madagascar', en: 'Madagascar' },
-    period: { fr: '2020 – 2026', en: '2020 – 2026' },
+    period: { fr: '2020 – sept. 2026', en: '2020 – Sep 2026' },
     summary: {
       fr: 'Projets internes, projets pour des clients locaux et interventions à distance sur des projets internationaux en tant que consultant.',
       en: 'Internal projects, projects for local clients and remote work on international projects as a consultant.',
@@ -695,16 +695,16 @@ const experiences = [
       {
         title: { fr: 'ASYNC — ERP de gestion d’entreprise', en: 'ASYNC — business management ERP' },
         project: 'async', // étude de cas liée dans le CV
-        period: { fr: '2024 – aujourd’hui', en: '2024 – present' },
+        period: { fr: '2024 – sept. 2026', en: '2024 – Sep 2026' },
         highlights: {
           fr: [
-            'ERP interne développé chez BICI, depuis le lancement du projet en 2024',
+            'ERP interne développé chez BICI, du lancement du projet en 2024 à septembre 2026',
             'Participation au développement de tous les modules : ventes, achats, stock, caisse, comptabilité, tiers, gestion électronique des documents',
             'Tableau de bord de pilotage : chiffre d’affaires, ventes du jour, de la semaine et du mois, courbe d’évolution',
             'Modules d’analyse, de prévision, de rapports et d’historique ; recherche globale et listes configurables',
           ],
           en: [
-            'Internal ERP built at BICI, since the project started in 2024',
+            'Internal ERP built at BICI, from the project start in 2024 to September 2026',
             'Contributed to every module: sales, purchasing, inventory, cash desk, accounting, third parties, document management',
             'Management dashboard: revenue, sales for the day, week and month, trend chart',
             'Analysis, forecasting, reporting and history modules; global search and configurable lists',
@@ -714,16 +714,16 @@ const experiences = [
       },
       {
         title: { fr: 'Ketrika.com — e-commerce & billetterie en ligne', en: 'Ketrika.com — e-commerce & online ticketing' },
-        period: { fr: '2024 – aujourd’hui', en: '2024 – present' },
+        period: { fr: '2024 – sept. 2026', en: '2024 – Sep 2026' },
         highlights: {
           fr: [
-            'Mainteneur du projet depuis 2024',
+            'Mainteneur du projet de 2024 à septembre 2026',
             'Refonte du design : ergonomie et navigation améliorées',
             'Développement front-end et back-end (Java, JEE, JSP) et API REST pour le contenu dynamique',
             'Billetterie en ligne avec plan de salle interactif et disponibilité des places en temps réel',
           ],
           en: [
-            'Project maintainer since 2024',
+            'Project maintainer from 2024 to September 2026',
             'Design overhaul: improved ergonomics and navigation',
             'Front-end and back-end development (Java, JEE, JSP) and REST APIs for dynamic content',
             'Online ticketing with an interactive seating plan and real-time seat availability',
@@ -967,7 +967,7 @@ const seo = {
   knowsLanguage: ['mg', 'fr', 'en'],
   nationality: 'Madagascar',
   address: { locality: 'Antananarivo', country: 'MG' },
-  worksFor: 'BICI', // employeur actuel ; '' pour ne pas l'indiquer
+  worksFor: '', // employeur actuel ; '' pour ne pas l'indiquer
   published: '2026-10-01',
 };
 
